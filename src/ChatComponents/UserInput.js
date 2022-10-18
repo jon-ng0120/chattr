@@ -17,8 +17,11 @@ const SendMessage = ({ chatUser }) => {
   const { uid, displayName, photoURL } = auth.currentUser;
 
   const sendMessage = async (e) => {
-    const message = messageRef.current.value;
     e.preventDefault();
+
+    const message = messageRef.current.value;
+
+    if (message === '') return;
 
     const joinedIDs = [chatUser.uid, uid].sort().join('');
     const chatRef = doc(db, 'chatrooms', joinedIDs);

@@ -1,0 +1,75 @@
+.parent_div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80rem;
+  margin: auto;
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #fff;
+}
+
+.google_login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  width: 30rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border-radius: 20px;
+  border: 1px solid #aaa;
+  cursor: pointer;
+  padding: 0.3rem 0 0.5rem 0;
+  background-color: #fff;
+  color: black;
+  margin: 2rem auto;
+}
+
+.google_login img {
+  height: 2rem;
+  margin-right: 1rem;
+}
+
+.login_credentials {
+  text-align: left;
+}
+
+.login_credentials div {
+  margin-bottom: 0.6rem;
+}
+
+.login_credentials input {
+  padding: 0.8rem 0.9rem;
+  background-color: #486483;
+  border: none;
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
+  margin-top: 0.7rem;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  color: #fff;
+}
+
+.login_credentials input::placeholder {
+  color: #aaa;
+}
+
+.login_button {
+  border: none;
+  width: auto;
+  background-color: #d8572a;
+  padding: 1rem;
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  border-radius: 10px;
+  margin: 1rem 0 2rem 0;
+  cursor: pointer;
+}
+
+.sign_up {
+  color: #7694b3;
+  cursor: pointer;
+}

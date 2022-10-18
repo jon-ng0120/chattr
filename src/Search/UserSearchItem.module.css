@@ -1,0 +1,17 @@
+.search_results_item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  cursor: pointer;
+}
+
+.search_results_item:hover {
+  opacity: 0.8;
+}
+
+.search_results_item img {
+  border-radius: 50%;
+  height: 3.5rem;
+  width: auto;
+}

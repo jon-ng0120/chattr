@@ -7,7 +7,7 @@ import {
   getAdditionalUserInfo,
 } from 'firebase/auth';
 import { auth, usersCol } from '../firebase-config';
-import { addDoc } from 'firebase/firestore';
+import { setDoc, doc } from 'firebase/firestore';
 
 const LoginPage = () => {
   const googleSignIn = async () => {
@@ -15,11 +15,11 @@ const LoginPage = () => {
     provider.setCustomParameters({ prompt: 'select_account' });
     const user = await signInWithPopup(auth, provider);
     const isFirstLogin = getAdditionalUserInfo(user).isNewUser;
-    console.log(user);
+    console.log(user.user.uid);
     console.log(isFirstLogin);
 
     if (isFirstLogin) {
-      await addDoc(usersCol, {
+      await setDoc(doc(usersCol, user.user.uid), {
         uid: user.user.uid,
         displayName: user.user.displayName,
         email: user.user.email,

@@ -26,6 +26,18 @@ const SendMessage = ({ chatUser }) => {
     const joinedIDs = [chatUser.uid, uid].sort().join('');
     const chatRef = doc(db, 'chatrooms', joinedIDs);
     const chatSnap = await getDoc(chatRef);
+    const currentUserRef = doc(db, 'users', uid);
+    const currentUserSnap = await getDoc(currentUserRef);
+    const chatUserRef = doc(db, 'users', chatUser.uid);
+
+    if (!currentUserSnap.data().chats.includes(joinedIDs)) {
+      await updateDoc(currentUserRef, {
+        chats: arrayUnion(joinedIDs),
+      });
+      await updateDoc(chatUserRef, {
+        chats: arrayUnion(joinedIDs),
+      });
+    }
 
     if (!chatSnap.exists()) {
       await setDoc(doc(chatRoomsCol, `${chatUser.uid}${uid}`), {

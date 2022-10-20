@@ -43,6 +43,7 @@ const SendMessage = ({ chatUser }) => {
       await setDoc(doc(chatRoomsCol, `${chatUser.uid}${uid}`), {
         createdAt: serverTimestamp(),
         lastUpdated: serverTimestamp(),
+        messages: [],
         users: [
           {
             uid,

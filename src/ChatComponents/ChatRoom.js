@@ -6,14 +6,8 @@ import Message from './Message';
 import UserInput from './UserInput';
 
 const ChatRoom = ({ user }) => {
-  const elementRef = useRef();
   const [messages, setMessages] = useState([]);
   const { uid } = auth.currentUser;
-
-  const ScrollToBottom = () => {
-    elementRef.current.scrollIntoView();
-    console.log('test');
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,11 +15,15 @@ const ChatRoom = ({ user }) => {
       const chatRef = doc(db, 'chatrooms', joinedIDs);
       const chatSnap = await getDoc(chatRef);
 
-      if (chatSnap.exists()) {
-        onSnapshot(chatRef, (snapshot) => {
-          setMessages(snapshot.data().messages);
-        });
+      if (!chatSnap.exists()) {
+        setMessages([]);
       }
+
+      onSnapshot(chatRef, (snapshot) => {
+        if (snapshot.data()) {
+          setMessages(snapshot.data().messages);
+        }
+      });
     };
     fetchData();
   }, [user]);
@@ -45,7 +43,6 @@ const ChatRoom = ({ user }) => {
             />
           );
         })}
-        <div ref={elementRef} />
       </div>
 
       <UserInput chatUser={user} />

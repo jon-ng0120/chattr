@@ -15,8 +15,6 @@ const LoginPage = () => {
     provider.setCustomParameters({ prompt: 'select_account' });
     const user = await signInWithPopup(auth, provider);
     const isFirstLogin = getAdditionalUserInfo(user).isNewUser;
-    console.log(user.user.uid);
-    console.log(isFirstLogin);
 
     if (isFirstLogin) {
       await setDoc(doc(usersCol, user.user.uid), {

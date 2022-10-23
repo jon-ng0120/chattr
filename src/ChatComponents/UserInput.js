@@ -7,8 +7,7 @@ import {
   arrayUnion,
   getDoc,
 } from 'firebase/firestore';
-import { chatRoomsCol, db } from '../firebase-config';
-import { auth } from '../firebase-config';
+import { chatRoomsCol, db, auth } from '../firebase-config';
 import classes from './UserInput.module.css';
 
 const SendMessage = ({ chatUser }) => {

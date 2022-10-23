@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import UserSearch from '../Search/UserSearch';
 import ChatRoom from './ChatRoom';
 import classes from './ChatRooms.module.css';
+import ChatsList from './ChatsList';
 
 const ChatRooms = () => {
   const [activeChatUser, setActiveChatUser] = useState();
@@ -11,9 +12,12 @@ const ChatRooms = () => {
   };
 
   return (
-    <div className={classes.chat_rooms}>
+    <div>
       <UserSearch setActiveChatHandler={setActiveChatHandler} />
-      {activeChatUser && <ChatRoom user={activeChatUser} />}
+      <div>
+        <ChatsList />
+        {activeChatUser && <ChatRoom user={activeChatUser} />}
+      </div>
     </div>
   );
 };

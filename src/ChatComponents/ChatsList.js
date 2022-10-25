@@ -1,24 +1,53 @@
-import React from 'react';
-import { doc, getDoc } from 'firebase/firestore';
+import React, { useState, useEffect } from 'react';
+import {
+  doc,
+  getDoc,
+  collection,
+  query,
+  where,
+  onSnapshot,
+} from 'firebase/firestore';
 import { auth, db } from '../firebase-config';
+import ChatsListItem from './ChatsListItem';
 
 const ChatsList = () => {
+  const [chatsList, setChatsList] = useState([]);
+  const [snapShot, setSnapShot] = useState();
   const { uid } = auth.currentUser;
 
-  const getCurrentUserChats = async () => {
-    try {
+  useEffect(() => {
+    const q = query(collection(db, 'users'), where('uid', '==', uid));
+    onSnapshot(q, (snapshot) => {
+      console.log('test');
+      setSnapShot(snapshot);
+    });
+  }, []);
+
+  useEffect(() => {
+    const getCurrentUserChats = async () => {
       const currentUserRef = doc(db, 'users', uid);
       const currentUserSnap = await getDoc(currentUserRef);
       const currentUserChats = currentUserSnap.data().chats;
-      createChatListItems(currentUserChats);
-    } catch (error) {
-      return error;
-    }
-  };
 
-  const createChatListItems = (chats) => {};
+      const currentUserChatDocs = await Promise.all(
+        currentUserChats.map(async (chat) => {
+          const chatRef = doc(db, 'chatrooms', chat);
+          const chatDoc = await getDoc(chatRef);
+          return chatDoc.data();
+        })
+      );
+      setChatsList(currentUserChatDocs);
+    };
+    getCurrentUserChats();
+  }, [snapShot]);
 
-  return <div>ChatsList</div>;
+  return (
+    <div>
+      {chatsList.map((chat) => {
+        return <ChatsListItem users={chat.users} messages={chat.messages} />;
+      })}
+    </div>
+  );
 };
 
 export default ChatsList;

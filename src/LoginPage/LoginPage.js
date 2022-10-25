@@ -23,6 +23,7 @@ const LoginPage = () => {
         email: user.user.email,
         photoURL: user.user.photoURL,
         chats: [],
+        lastMessagedDate: '',
       });
     }
   };

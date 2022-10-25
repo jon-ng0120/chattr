@@ -38,8 +38,16 @@ const SendMessage = ({ chatUser }) => {
       });
     }
 
+    await updateDoc(currentUserRef, {
+      lastMessagedDate: serverTimestamp(),
+    });
+    await updateDoc(chatUserRef, {
+      lastMessagedDate: serverTimestamp(),
+    });
+
     if (!chatSnap.exists()) {
       await setDoc(doc(chatRoomsCol, `${chatUser.uid}${uid}`), {
+        id: `${chatUser.uid}${uid}`,
         createdAt: serverTimestamp(),
         lastUpdated: serverTimestamp(),
         messages: [],
@@ -62,6 +70,7 @@ const SendMessage = ({ chatUser }) => {
       lastUpdated: serverTimestamp(),
       messages: arrayUnion({
         id: uid + new Date().getTime(),
+        date: new Date(),
         uid,
         photoURL,
         displayName,

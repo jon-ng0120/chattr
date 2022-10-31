@@ -6,15 +6,17 @@ const ChatsListItem = ({ users, messages }) => {
   const chatUsers = users.filter((user) => user.uid !== uid);
   const lastMessage = messages[messages.length - 1].message;
 
-  return (
-    <div>
-      <img src={chatUsers[0].photoURL} />
+  if (!users.every((userUid) => userUid.uid == uid)) {
+    return (
       <div>
-        <p>{chatUsers[0].displayName}</p>
-        <p>{lastMessage}</p>
+        <img src={chatUsers[0].photoURL} />
+        <div>
+          <p>{chatUsers[0].displayName}</p>
+          <p>{lastMessage}</p>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default ChatsListItem;

@@ -18,7 +18,6 @@ const ChatsList = () => {
   useEffect(() => {
     const q = query(collection(db, 'users'), where('uid', '==', uid));
     onSnapshot(q, (snapshot) => {
-      console.log('test');
       setSnapShot(snapshot);
     });
   }, []);
@@ -36,6 +35,7 @@ const ChatsList = () => {
           return chatDoc.data();
         })
       );
+
       setChatsList(currentUserChatDocs);
     };
     getCurrentUserChats();
@@ -44,7 +44,13 @@ const ChatsList = () => {
   return (
     <div>
       {chatsList.map((chat) => {
-        return <ChatsListItem users={chat.users} messages={chat.messages} />;
+        return (
+          <ChatsListItem
+            key={chat.id}
+            users={chat.users}
+            messages={chat.messages}
+          />
+        );
       })}
     </div>
   );

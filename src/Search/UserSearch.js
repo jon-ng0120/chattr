@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { usersCol } from '../firebase-config';
 import { query, where, onSnapshot } from 'firebase/firestore';
 import UserSearchItem from './UserSearchItem';
+import { auth } from '../firebase-config';
 import classes from './UserSearch.module.css';
 
 const UserSearch = (props) => {
+  const { uid } = auth.currentUser;
   const [searchUser, setSearchUser] = useState('');
   const [foundUsers, setFoundUsers] = useState([]);
 
@@ -45,13 +47,15 @@ const UserSearch = (props) => {
       <input value={searchUser} onChange={userSearchHandler} />
       <div className={classes.search_results}>
         {foundUsers.map((user) => {
-          return (
-            <UserSearchItem
-              key={user.uid}
-              user={user}
-              selectUser={selectedUserHandler}
-            />
-          );
+          if (user.uid !== uid) {
+            return (
+              <UserSearchItem
+                key={user.uid}
+                user={user}
+                selectUser={selectedUserHandler}
+              />
+            );
+          }
         })}
       </div>
     </div>

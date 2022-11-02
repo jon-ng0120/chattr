@@ -1,37 +1,24 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { onSnapshot, getDoc, doc } from 'firebase/firestore';
 import { db, auth } from '../firebase-config';
 import classes from './ChatRoom.module.css';
 import Message from './Message';
-import UserInput from './UserInput';
+import SendMessage from './SendMessage';
+import FirebaseContext from '../store/firebase-context';
 
-const ChatRoom = ({ user }) => {
-  const [messages, setMessages] = useState([]);
-  const { uid } = auth.currentUser;
+const ChatRoom = () => {
+  const firebaseProviderCtx = useContext(FirebaseContext);
+  const activeChatUser = firebaseProviderCtx.activeChatUser;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const joinedIDs = [user.uid, uid].sort().join('');
-      const chatRef = doc(db, 'chatrooms', joinedIDs);
-      const chatSnap = await getDoc(chatRef);
-
-      if (!chatSnap.exists()) {
-        setMessages([]);
-      }
-
-      onSnapshot(chatRef, (snapshot) => {
-        if (snapshot.data()) {
-          setMessages(snapshot.data().messages);
-        }
-      });
-    };
-    fetchData();
-  }, [user]);
+  useEffect(() => {}, [activeChatUser]);
 
   return (
     <div className={classes.chat_room}>
       <div className={classes.chat_room_container}>
-        {messages.map(({ id, uid, displayName, photoURL, message }) => {
+        <div>
+          <p>{activeChatUser && activeChatUser.displayName}</p>
+        </div>
+        {/* {messages.map(({ id, uid, displayName, photoURL, message }) => {
           return (
             <Message
               key={id}
@@ -42,10 +29,10 @@ const ChatRoom = ({ user }) => {
               message={message}
             />
           );
-        })}
+        })} */}
       </div>
 
-      <UserInput chatUser={user} />
+      <SendMessage />
     </div>
   );
 };

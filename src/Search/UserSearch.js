@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { usersCol } from '../firebase-config';
 import { query, where, onSnapshot } from 'firebase/firestore';
 import UserSearchItem from './UserSearchItem';
-import { auth } from '../firebase-config';
 import classes from './UserSearch.module.css';
+import FirebaseContext from '../store/firebase-context';
 
-const UserSearch = (props) => {
-  const { uid } = auth.currentUser;
+const UserSearch = () => {
+  const firebaseProviderCtx = useContext(FirebaseContext);
+  const { uid } = firebaseProviderCtx.loggedInUser;
   const [searchUser, setSearchUser] = useState('');
   const [foundUsers, setFoundUsers] = useState([]);
 
@@ -19,7 +20,7 @@ const UserSearch = (props) => {
   };
 
   const selectedUserHandler = (user) => {
-    props.setActiveChatHandler(user);
+    firebaseProviderCtx.setActiveChat(user);
   };
 
   useEffect(() => {

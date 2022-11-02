@@ -1,17 +1,16 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
+
 import LoginPage from './LoginPage/LoginPage';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from './firebase-config';
-import Header from './Header/Header';
-import ChatRooms from './ChatComponents/ChatRooms';
+import FirebaseContext from './store/firebase-context';
+import Chats from './ChatComponents/Chats';
 
 const App = () => {
-  const [user] = useAuthState(auth);
+  const firebaseProviderCtx = useContext(FirebaseContext);
   return (
     <React.Fragment>
-      <Header />
-      {user ? <ChatRooms /> : <LoginPage />}
+      {!firebaseProviderCtx.isLoggedIn && <LoginPage />}
+      {firebaseProviderCtx.isLoggedIn && <Chats />}
     </React.Fragment>
   );
 };

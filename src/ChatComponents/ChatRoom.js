@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {
+  doc,
   collection,
   query,
   where,
   onSnapshot,
-  getDocs,
   orderBy,
-  QuerySnapshot,
+  getDoc,
 } from 'firebase/firestore';
 import classes from './ChatRoom.module.css';
 import Message from './Message';
@@ -37,7 +37,6 @@ const ChatRoom = () => {
 
     activeChatUser && getMessages();
   }, [activeChatUser]);
-  console.log(messages);
 
   return (
     <div className={classes.chat_room}>
@@ -53,8 +52,16 @@ const ChatRoom = () => {
               key={messageData.id}
               id={messageData.id}
               uid={messageData.uid}
-              displayName={messageData.displayName}
-              photoURL={messageData.photoURL}
+              displayName={
+                loggedInUser.uid === messageData.uid
+                  ? loggedInUser.displayName
+                  : activeChatUser.displayName
+              }
+              photoURL={
+                loggedInUser.uid === messageData.uid
+                  ? loggedInUser.photoURL
+                  : activeChatUser.photoURL
+              }
               message={messageData.message}
             />
           );

@@ -2,10 +2,11 @@ import React from 'react';
 import classes from './Message.module.css';
 import { auth } from '../firebase-config';
 
-const Message = ({ uid, message, photoURL }) => {
+const Message = ({ uid, message, displayName, photoURL }) => {
   const currentUser = auth.currentUser;
   return (
     <div className={classes.message_container}>
+      <p>{displayName}</p>
       <img className={classes.display_picture} src={photoURL} />
       <p
         className={`${classes.message} ${

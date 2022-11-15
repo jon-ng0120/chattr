@@ -1,6 +1,12 @@
 import React, { useContext, useRef } from 'react';
 import classes from './SendMessage.module.css';
-import { setDoc, doc } from 'firebase/firestore';
+import {
+  setDoc,
+  doc,
+  addDoc,
+  collection,
+  serverTimestamp,
+} from 'firebase/firestore';
 import FirebaseContext from '../store/firebase-context';
 
 const SendMessage = () => {
@@ -21,10 +27,22 @@ const SendMessage = () => {
     const joinedIDs = [loggedInUser.uid, activeChatUser.uid].sort().join('');
 
     try {
+      await addDoc(collection(firebaseProviderCtx.db, 'messages'), {
+        chatRoomId: joinedIDs,
+        message: message,
+        sentBy: loggedInUser.uid,
+        sentAt: serverTimestamp(),
+      });
+    } catch (err) {
+      console.log(err);
+    }
+
+    try {
       await setDoc(doc(firebaseProviderCtx.db, 'chatrooms', joinedIDs), {
         id: joinedIDs,
         createdBy: loggedInUser.uid,
         lastMessage: message,
+        members: [loggedInUser.uid, activeChatUser.uid],
       });
     } catch (err) {
       console.log(err);

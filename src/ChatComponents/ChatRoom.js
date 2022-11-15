@@ -1,16 +1,43 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { onSnapshot, getDoc, doc } from 'firebase/firestore';
-import { db, auth } from '../firebase-config';
+import {
+  collection,
+  query,
+  where,
+  onSnapshot,
+  getDocs,
+  orderBy,
+  QuerySnapshot,
+} from 'firebase/firestore';
 import classes from './ChatRoom.module.css';
 import Message from './Message';
 import SendMessage from './SendMessage';
 import FirebaseContext from '../store/firebase-context';
 
 const ChatRoom = () => {
+  const [messages, setMessages] = useState([]);
   const firebaseProviderCtx = useContext(FirebaseContext);
-  const activeChatUser = firebaseProviderCtx.activeChatUser;
 
-  useEffect(() => {}, [activeChatUser]);
+  const { loggedInUser, activeChatUser, db } = firebaseProviderCtx;
+
+  useEffect(() => {
+    const getMessages = async () => {
+      const joinedIDs = [loggedInUser.uid, activeChatUser.uid].sort().join('');
+
+      const messagesRef = collection(db, 'messages');
+      const messagesQuery = query(
+        messagesRef,
+        where('chatRoomId', '==', joinedIDs),
+        orderBy('sentAt')
+      );
+
+      onSnapshot(messagesQuery, (querySnapshot) => {
+        setMessages(querySnapshot.docs);
+      });
+    };
+
+    activeChatUser && getMessages();
+  }, [activeChatUser]);
+  console.log(messages);
 
   return (
     <div className={classes.chat_room}>
@@ -18,18 +45,19 @@ const ChatRoom = () => {
         <div>
           <p>{activeChatUser && activeChatUser.displayName}</p>
         </div>
-        {/* {messages.map(({ id, uid, displayName, photoURL, message }) => {
+        {messages.map((message) => {
+          const messageData = message.data();
           return (
             <Message
-              key={id}
-              id={id}
-              uid={uid}
-              displayName={displayName}
-              photoURL={photoURL}
-              message={message}
+              key={messageData.id}
+              id={messageData.id}
+              uid={messageData.uid}
+              displayName={messageData.displayName}
+              photoURL={messageData.photoURL}
+              message={messageData.message}
             />
           );
-        })} */}
+        })}
       </div>
 
       <SendMessage />

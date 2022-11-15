@@ -14,8 +14,7 @@ const SendMessage = () => {
 
   const firebaseProviderCtx = useContext(FirebaseContext);
 
-  const { loggedInUser } = firebaseProviderCtx;
-  const { activeChatUser } = firebaseProviderCtx;
+  const { loggedInUser, activeChatUser, db } = firebaseProviderCtx;
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -27,10 +26,12 @@ const SendMessage = () => {
     const joinedIDs = [loggedInUser.uid, activeChatUser.uid].sort().join('');
 
     try {
-      await addDoc(collection(firebaseProviderCtx.db, 'messages'), {
+      const messagesRef = doc(collection(db, 'messages'));
+      await setDoc(messagesRef, {
+        id: messagesRef.id,
         chatRoomId: joinedIDs,
         message: message,
-        sentBy: loggedInUser.uid,
+        uid: loggedInUser.uid,
         sentAt: serverTimestamp(),
       });
     } catch (err) {

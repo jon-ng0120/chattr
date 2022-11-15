@@ -47,6 +47,7 @@ const ChatRoom = () => {
         </div>
         {messages.map((message) => {
           const messageData = message.data();
+
           return (
             <Message
               key={messageData.id}

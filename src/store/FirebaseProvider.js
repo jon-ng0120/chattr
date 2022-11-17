@@ -36,6 +36,7 @@ const FirebaseProvider = (props) => {
         displayName: user.displayName,
         email: user.email,
         photoURL: user.photoURL,
+        chatRooms: [],
       });
       setIsLoggedIn(true);
     } catch (err) {

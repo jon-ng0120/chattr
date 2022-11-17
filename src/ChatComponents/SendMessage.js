@@ -3,9 +3,10 @@ import classes from './SendMessage.module.css';
 import {
   setDoc,
   doc,
-  addDoc,
+  updateDoc,
   collection,
   serverTimestamp,
+  arrayUnion,
 } from 'firebase/firestore';
 import FirebaseContext from '../store/firebase-context';
 
@@ -16,14 +17,14 @@ const SendMessage = () => {
 
   const { loggedInUser, activeChatUser, db } = firebaseProviderCtx;
 
+  const joinedIDs = [loggedInUser.uid, activeChatUser.uid].sort().join('');
+
   const sendMessage = async (e) => {
     e.preventDefault();
 
     const message = messageRef.current.value;
 
     if (message === '') return;
-
-    const joinedIDs = [loggedInUser.uid, activeChatUser.uid].sort().join('');
 
     try {
       const messagesRef = doc(collection(db, 'messages'));
@@ -48,7 +49,24 @@ const SendMessage = () => {
     } catch (err) {
       console.log(err);
     }
+
+    try {
+      addToUserGroups();
+    } catch (err) {
+      console.log(err);
+    }
     messageRef.current.value = '';
+  };
+
+  const addToUserGroups = async () => {
+    const loggedInUserRef = doc(db, 'users', loggedInUser.uid);
+    await updateDoc(loggedInUserRef, {
+      chatRooms: arrayUnion(joinedIDs),
+    });
+    const chatUserRef = doc(db, 'users', activeChatUser.uid);
+    await updateDoc(chatUserRef, {
+      chatRooms: arrayUnion(joinedIDs),
+    });
   };
 
   return (

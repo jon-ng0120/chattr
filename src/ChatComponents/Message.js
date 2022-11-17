@@ -24,7 +24,7 @@ const Message = ({ uid, message, displayName, photoURL }) => {
               : classes.display_name_recieved
           } `}
         >
-          {displayName}
+          {uid === currentUser.uid ? 'Me' : displayName}
         </p>
         <p
           className={`${classes.message} ${

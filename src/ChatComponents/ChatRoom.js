@@ -1,12 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {
-  doc,
   collection,
   query,
   where,
   onSnapshot,
   orderBy,
-  getDoc,
 } from 'firebase/firestore';
 import classes from './ChatRoom.module.css';
 import Message from './Message';

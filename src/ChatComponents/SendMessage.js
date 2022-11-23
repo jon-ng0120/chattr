@@ -17,7 +17,11 @@ const SendMessage = () => {
 
   const { loggedInUser, activeChatUser, db } = firebaseProviderCtx;
 
-  const joinedIDs = [loggedInUser.uid, activeChatUser.uid].sort().join('');
+  let joinedIDs = undefined;
+
+  if (activeChatUser) {
+    joinedIDs = [loggedInUser.uid, activeChatUser.uid].sort().join('');
+  }
 
   const sendMessage = async (e) => {
     e.preventDefault();

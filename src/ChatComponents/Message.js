@@ -15,6 +15,7 @@ const Message = ({ uid, message, displayName, photoURL }) => {
           uid === currentUser.uid ? classes.display_picture_sent : ''
         } `}
         src={photoURL}
+        referrerPolicy="no-referrer"
       />
       <div className={classes.message_details}>
         <p

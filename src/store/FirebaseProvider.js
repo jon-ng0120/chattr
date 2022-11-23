@@ -31,13 +31,16 @@ const FirebaseProvider = (props) => {
       const userObj = await signInWithPopup(auth, provider);
       const user = userObj.user;
 
-      await setDoc(doc(db, 'users', user.uid), {
-        uid: user.uid,
-        displayName: user.displayName,
-        email: user.email,
-        photoURL: user.photoURL,
-        chatRooms: [],
-      });
+      await setDoc(
+        doc(db, 'users', user.uid),
+        {
+          uid: user.uid,
+          displayName: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+        },
+        { merge: true }
+      );
       setIsLoggedIn(true);
     } catch (err) {
       console.log(err);

@@ -1,0 +1,7 @@
+.chats_home_container {
+  display: flex;
+}
+
+.chats_home_container > div:first-child {
+  width: 30%;
+}

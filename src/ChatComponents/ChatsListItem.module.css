@@ -1,0 +1,21 @@
+.chat_list_item_container {
+  display: flex;
+  color: rgba(255, 255, 255, 0.6);
+  gap: 1rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.chat_list_item_container img {
+  width: 3.5rem;
+  border-radius: 50%;
+}
+
+.chat_details {
+  display: flex;
+  flex-direction: column;
+}
+
+.display_name {
+  color: #fff;
+}

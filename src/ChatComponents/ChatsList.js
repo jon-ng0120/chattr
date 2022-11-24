@@ -1,15 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import {
-  doc,
-  getDoc,
-  query,
-  onSnapshot,
-  collection,
-  where,
-  getDocs,
-} from 'firebase/firestore';
+import { query, onSnapshot, collection, where } from 'firebase/firestore';
 import FirebaseContext from '../store/firebase-context';
+import UserSearch from '../Search/UserSearch';
 import ChatsListItem from './ChatsListItem';
+import classes from './ChatsList.module.css';
 
 const ChatsList = () => {
   const [chatsList, setChatsList] = useState([]);
@@ -37,14 +31,17 @@ const ChatsList = () => {
 
   return (
     <div>
-      {chatsList.map((chatRoom) => (
-        <ChatsListItem
-          key={chatRoom.id}
-          id={chatRoom.id}
-          lastMessage={chatRoom.lastMessage}
-          members={chatRoom.members}
-        />
-      ))}
+      <UserSearch />
+      <div className={classes.chats_list_container}>
+        {chatsList.map((chatRoom) => (
+          <ChatsListItem
+            key={chatRoom.id}
+            id={chatRoom.id}
+            lastMessage={chatRoom.lastMessage}
+            members={chatRoom.members}
+          />
+        ))}
+      </div>
     </div>
   );
 };

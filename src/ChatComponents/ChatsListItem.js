@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
+import classes from './ChatsListItem.module.css';
 
 import FirebaseContext from '../store/firebase-context';
 
@@ -28,10 +29,12 @@ const ChatsListItem = ({ id, members, lastMessage }) => {
 
   if (chatMember) {
     return (
-      <div>
+      <div className={classes.chat_list_item_container}>
         <img src={chatMember.photoURL} referrerPolicy="no-referrer" />
-        <p>{chatMember.displayName}</p>
-        <p>{lastMessage}</p>
+        <div className={classes.chat_details}>
+          <p className={classes.display_name}>{chatMember.displayName}</p>
+          <p className={classes.last_message}>{lastMessage}</p>
+        </div>
       </div>
     );
   }

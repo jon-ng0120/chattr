@@ -66,7 +66,7 @@ const ChatRoom = () => {
         })}
       </div>
 
-      <SendMessage />
+      {activeChatUser && <SendMessage />}
     </div>
   );
 };

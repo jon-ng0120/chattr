@@ -1,14 +1,38 @@
 .chat_room {
-  width: 100%;
-  height: 80vh;
-  overflow: auto;
+  padding-left: 3rem;
+  box-sizing: border-box;
 }
 
 .chat_room_container {
-  padding: 1rem;
-  margin-bottom: 4rem;
+  height: 100vh;
+  position: relative;
 }
 
-.chat_room_container div {
-  margin-bottom: 1rem;
+.chats_container {
+  padding: 1rem;
+  overflow: auto;
+  height: 80%;
+}
+
+.chats_container > div {
+  margin-bottom: 1.5rem;
+}
+
+.display_info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #232b38;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.display_name {
+  color: #fff;
+  font-weight: 600;
+}
+
+.display_photo {
+  border-radius: 50%;
+  width: 4rem;
 }

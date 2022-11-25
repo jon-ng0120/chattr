@@ -38,35 +38,45 @@ const ChatRoom = () => {
 
   return (
     <div className={classes.chat_room}>
-      <div className={classes.chat_room_container}>
-        <div>
-          <p>{activeChatUser && activeChatUser.displayName}</p>
-        </div>
-        {messages.map((message) => {
-          const messageData = message.data();
-
-          return (
-            <Message
-              key={messageData.id}
-              id={messageData.id}
-              uid={messageData.uid}
-              displayName={
-                loggedInUser.uid === messageData.uid
-                  ? loggedInUser.displayName
-                  : activeChatUser.displayName
-              }
-              photoURL={
-                loggedInUser.uid === messageData.uid
-                  ? loggedInUser.photoURL
-                  : activeChatUser.photoURL
-              }
-              message={messageData.message}
+      {activeChatUser && (
+        <div className={classes.chat_room_container}>
+          <div className={classes.display_info}>
+            <img
+              src={activeChatUser.photoURL}
+              className={classes.display_photo}
             />
-          );
-        })}
-      </div>
+            <p className={classes.display_name}>
+              {activeChatUser && activeChatUser.displayName}
+            </p>
+          </div>
+          <div className={classes.chats_container}>
+            {messages.map((message) => {
+              const messageData = message.data();
 
-      {activeChatUser && <SendMessage />}
+              return (
+                <Message
+                  key={messageData.id}
+                  id={messageData.id}
+                  uid={messageData.uid}
+                  displayName={
+                    loggedInUser.uid === messageData.uid
+                      ? loggedInUser.displayName
+                      : activeChatUser.displayName
+                  }
+                  photoURL={
+                    loggedInUser.uid === messageData.uid
+                      ? loggedInUser.photoURL
+                      : activeChatUser.photoURL
+                  }
+                  message={messageData.message}
+                />
+              );
+            })}
+          </div>
+
+          {activeChatUser && <SendMessage />}
+        </div>
+      )}
     </div>
   );
 };

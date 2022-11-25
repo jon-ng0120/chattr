@@ -4,11 +4,11 @@ import classes from './ChatsListItem.module.css';
 
 import FirebaseContext from '../store/firebase-context';
 
-const ChatsListItem = ({ id, members, lastMessage }) => {
+const ChatsListItem = ({ members, lastMessage }) => {
   const [chatMember, setChatMember] = useState();
 
   const firebaseProviderCtx = useContext(FirebaseContext);
-  const { loggedInUser, db } = firebaseProviderCtx;
+  const { loggedInUser, db, setActiveChat } = firebaseProviderCtx;
 
   const setChatMemberHandler = async (members) => {
     const filterChatMember = members.filter(
@@ -29,7 +29,10 @@ const ChatsListItem = ({ id, members, lastMessage }) => {
 
   if (chatMember) {
     return (
-      <div className={classes.chat_list_item_container}>
+      <div
+        className={classes.chat_list_item_container}
+        onClick={() => setActiveChat(chatMember)}
+      >
         <img src={chatMember.photoURL} referrerPolicy="no-referrer" />
         <div className={classes.chat_details}>
           <p className={classes.display_name}>{chatMember.displayName}</p>

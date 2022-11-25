@@ -4,6 +4,11 @@
   gap: 1rem;
   overflow: hidden;
   margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.chat_list_item_container:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .chat_list_item_container img {

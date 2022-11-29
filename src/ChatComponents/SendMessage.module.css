@@ -1,16 +1,10 @@
 .user_input_container {
-  position: absolute;
-  bottom: 0;
-  z-index: 1;
-  display: flex;
-  background-color: #dedede;
-  padding: 0.8rem;
-  width: 95%;
+  width: 90%;
   box-sizing: border-box;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 3rem;
-  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  gap: 1rem;
 }
 
 .attachments {
@@ -37,8 +31,8 @@
   width: 100%;
   border: none;
   outline: none;
-  border-radius: 5px;
-  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  padding: 1rem;
   background-color: #dedede;
   font-size: 1.6rem;
 }
@@ -47,7 +41,5 @@
   background-color: inherit;
   color: #d8572a;
   border: none;
-  width: 3rem;
-  height: 3rem;
   cursor: pointer;
 }

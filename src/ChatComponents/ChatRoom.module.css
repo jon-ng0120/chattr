@@ -5,12 +5,13 @@
 .chat_room_container {
   height: 100vh;
   position: relative;
+  display: grid;
+  grid-template-rows: 7rem auto 10rem;
 }
 
 .chats_container {
-  padding: 2rem;
+  padding: 1.5rem;
   overflow: auto;
-  height: 80%;
 }
 
 .chats_container > div {

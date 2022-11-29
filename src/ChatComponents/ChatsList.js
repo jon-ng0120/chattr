@@ -31,16 +31,18 @@ const ChatsList = () => {
 
   return (
     <div>
-      <UserSearch />
       <div className={classes.chats_list_container}>
-        {chatsList.map((chatRoom) => (
-          <ChatsListItem
-            key={chatRoom.id}
-            id={chatRoom.id}
-            lastMessage={chatRoom.lastMessage}
-            members={chatRoom.members}
-          />
-        ))}
+        <UserSearch />
+        <div className={classes.chats_list_chats}>
+          {chatsList.map((chatRoom) => (
+            <ChatsListItem
+              key={chatRoom.id}
+              id={chatRoom.id}
+              lastMessage={chatRoom.lastMessage}
+              members={chatRoom.members}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

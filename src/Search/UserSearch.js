@@ -45,7 +45,15 @@ const UserSearch = () => {
 
   return (
     <div>
-      <input value={searchUser} onChange={userSearchHandler} />
+      <div className={classes.search_input}>
+        <span class="material-icons">search</span>
+        <input
+          value={searchUser}
+          onChange={userSearchHandler}
+          placeholder="Search User"
+        />
+      </div>
+
       <div className={classes.search_results}>
         {foundUsers.map((user) => {
           if (user.uid !== uid) {

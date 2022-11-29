@@ -1,4 +1,22 @@
+.search_input {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  background-color: #dedede;
+  border-radius: 5px;
+  padding: 0.5rem 0.5rem;
+  box-sizing: border-box;
+}
+
+.search_input input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #dedede;
+  font-size: 1.6rem;
+}
+
 .search_results {
   background-color: #dedede;
-  padding: 0.5rem 1rem;
 }

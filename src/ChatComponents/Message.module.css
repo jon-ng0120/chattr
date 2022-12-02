@@ -22,11 +22,12 @@
 .received_message {
   background-color: #3b3b3b;
   border-radius: 0 12px 12px 12px;
+  align-self: flex-start;
 }
 
 .display_name {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.6rem;
 }
 
 .display_name_recieved {
@@ -57,4 +58,10 @@
 
 .display_picture_sent {
   order: 1;
+}
+
+.message_date {
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 1.4rem;
 }

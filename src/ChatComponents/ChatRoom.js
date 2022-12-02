@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import {
   collection,
   query,
@@ -14,6 +14,7 @@ import FirebaseContext from '../store/firebase-context';
 const ChatRoom = () => {
   const [messages, setMessages] = useState([]);
   const firebaseProviderCtx = useContext(FirebaseContext);
+  const bottomRef = useRef(null);
 
   const { loggedInUser, activeChatUser, db } = firebaseProviderCtx;
 
@@ -35,6 +36,10 @@ const ChatRoom = () => {
 
     activeChatUser && getMessages();
   }, [activeChatUser]);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, [messages]);
 
   return (
     <div className={classes.chat_room}>
@@ -58,6 +63,7 @@ const ChatRoom = () => {
                   key={messageData.id}
                   id={messageData.id}
                   uid={messageData.uid}
+                  timestamp={messageData.sentAt}
                   displayName={
                     loggedInUser.uid === messageData.uid
                       ? loggedInUser.displayName
@@ -72,6 +78,7 @@ const ChatRoom = () => {
                 />
               );
             })}
+            <span ref={bottomRef} />
           </div>
 
           {activeChatUser && <SendMessage />}

@@ -4,10 +4,8 @@
 
 .chats_home_container > div:first-child {
   width: 20%;
-  height: 100%;
 }
 
 .chats_home_container > div:nth-child(2) {
   width: 80%;
-  height: 100%;
 }

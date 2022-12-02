@@ -2,8 +2,21 @@ import React from 'react';
 import classes from './Message.module.css';
 import { auth } from '../firebase-config';
 
-const Message = ({ uid, message, displayName, photoURL }) => {
+const Message = ({ uid, message, displayName, photoURL, timestamp }) => {
   const currentUser = auth.currentUser;
+
+  const returnDateTime = () => {
+    if (timestamp) {
+      const messageDate = timestamp.toDate().toDateString();
+      const messageDateFormatted = messageDate.split(' ').splice(1).join(' ');
+      const messageTimeFormatted = timestamp
+        .toDate()
+        .toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+      return `${messageDateFormatted}, ${messageTimeFormatted}`;
+    }
+  };
+
   return (
     <div
       className={`${classes.message_container} ${
@@ -36,6 +49,7 @@ const Message = ({ uid, message, displayName, photoURL }) => {
         >
           {message}
         </p>
+        <p className={classes.message_date}>{returnDateTime()}</p>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ import {
 } from 'firebase/firestore';
 import FirebaseContext from '../store/firebase-context';
 
-const SendMessage = () => {
+const SendMessage = (props) => {
   const messageRef = useRef('');
 
   const firebaseProviderCtx = useContext(FirebaseContext);
@@ -76,11 +76,9 @@ const SendMessage = () => {
   return (
     <div className={classes.user_input_container}>
       <p className={classes.attachments}>+</p>
-      <form className={classes.user_input}>
+      <form onSubmit={sendMessage} className={classes.user_input}>
         <input ref={messageRef} placeholder="Type a message" />
-        <button className="material-icons" onClick={sendMessage}>
-          send
-        </button>
+        <button className="material-icons">send</button>
       </form>
     </div>
   );

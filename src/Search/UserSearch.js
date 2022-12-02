@@ -46,7 +46,7 @@ const UserSearch = () => {
   return (
     <div>
       <div className={classes.search_input}>
-        <span class="material-icons">search</span>
+        <span className="material-icons">search</span>
         <input
           value={searchUser}
           onChange={userSearchHandler}

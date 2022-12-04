@@ -3,9 +3,9 @@
 }
 
 .chats_home_container > div:first-child {
-  width: 20%;
+  /* width: 20%; */
 }
 
 .chats_home_container > div:nth-child(2) {
-  width: 80%;
+  /* width: 80%; */
 }

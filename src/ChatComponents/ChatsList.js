@@ -30,19 +30,17 @@ const ChatsList = () => {
   }, []);
 
   return (
-    <div>
-      <div className={classes.chats_list_container}>
-        <UserSearch />
-        <div className={classes.chats_list_chats}>
-          {chatsList.map((chatRoom) => (
-            <ChatsListItem
-              key={chatRoom.id}
-              id={chatRoom.id}
-              lastMessage={chatRoom.lastMessage}
-              members={chatRoom.members}
-            />
-          ))}
-        </div>
+    <div className={classes.chats_list_container}>
+      <UserSearch />
+      <div className={classes.chats_list_chats}>
+        {chatsList.map((chatRoom) => (
+          <ChatsListItem
+            key={chatRoom.id}
+            id={chatRoom.id}
+            lastMessage={chatRoom.lastMessage}
+            members={chatRoom.members}
+          />
+        ))}
       </div>
     </div>
   );

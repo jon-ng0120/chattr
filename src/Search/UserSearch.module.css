@@ -19,4 +19,6 @@
 
 .search_results {
   background-color: #dedede;
+  margin-top: -0.4rem;
+  border-radius: 0 0 5px 5px;
 }

@@ -16,7 +16,13 @@ const ChatRoom = () => {
   const firebaseProviderCtx = useContext(FirebaseContext);
   const bottomRef = useRef(null);
 
-  const { loggedInUser, activeChatUser, db } = firebaseProviderCtx;
+  const {
+    loggedInUser,
+    activeChatUser,
+    db,
+    checkMobileView,
+    mobileChatRoomView,
+  } = firebaseProviderCtx;
 
   useEffect(() => {
     const getMessages = async () => {
@@ -44,8 +50,13 @@ const ChatRoom = () => {
   return (
     <div className={classes.chat_room}>
       {activeChatUser && (
-        <div className={classes.chat_room_container}>
+        <div
+          className={`${classes.chat_room_container} ${
+            mobileChatRoomView ? classes.active : classes.hidden
+          }`}
+        >
           <div className={classes.display_info}>
+            <button onClick={() => checkMobileView()}>Back</button>
             <img
               src={activeChatUser.photoURL}
               className={classes.display_photo}

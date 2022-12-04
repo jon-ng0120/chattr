@@ -1,5 +1,8 @@
 .chat_room {
   box-sizing: border-box;
+  width: 100%;
+  position: relative;
+  background-color: #232b38;
 }
 
 .chat_room_container {
@@ -7,6 +10,7 @@
   position: relative;
   display: grid;
   grid-template-rows: 7rem auto 10rem;
+  background-color: inherit;
 }
 
 .chats_container {
@@ -36,4 +40,17 @@
 .display_photo {
   border-radius: 50%;
   width: 4rem;
+}
+
+@media (max-width: 600px) {
+  .chat_room {
+    position: absolute;
+  }
+
+  .hidden {
+    z-index: 0;
+  }
+  .active {
+    z-index: 2;
+  }
 }

@@ -8,7 +8,8 @@ const ChatsListItem = ({ members, lastMessage }) => {
   const [chatMember, setChatMember] = useState();
 
   const firebaseProviderCtx = useContext(FirebaseContext);
-  const { loggedInUser, db, setActiveChat } = firebaseProviderCtx;
+  const { loggedInUser, db, setActiveChat, checkMobileView } =
+    firebaseProviderCtx;
 
   const setChatMemberHandler = async (members) => {
     const filterChatMember = members.filter(
@@ -31,7 +32,10 @@ const ChatsListItem = ({ members, lastMessage }) => {
     return (
       <div
         className={classes.chat_list_item_container}
-        onClick={() => setActiveChat(chatMember)}
+        onClick={() => {
+          setActiveChat(chatMember);
+          checkMobileView();
+        }}
       >
         <img src={chatMember.photoURL} referrerPolicy="no-referrer" />
         <div className={classes.chat_details}>

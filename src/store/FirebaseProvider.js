@@ -20,6 +20,7 @@ const FirebaseProvider = (props) => {
 
   const [isLoggedIn, setIsLoggedIn] = useState();
   const [activeChatUser, setActiveChatUser] = useState();
+  const [mobileChatRoomView, setMobileChatRoomView] = useState(false);
 
   const auth = getAuth();
   const db = getFirestore();
@@ -52,6 +53,14 @@ const FirebaseProvider = (props) => {
     setActiveChatUser(chatUser);
   };
 
+  const mobileChatRoomHandler = () => {
+    setMobileChatRoomView(!mobileChatRoomView);
+  };
+
+  const checkMobileView = () => {
+    window.innerWidth <= 600 && mobileChatRoomHandler();
+  };
+
   const firebaseContext = {
     db,
     auth,
@@ -60,6 +69,8 @@ const FirebaseProvider = (props) => {
     isLoggedIn,
     activeChatUser,
     setActiveChat: setActiveChatHandler,
+    checkMobileView,
+    mobileChatRoomView,
   };
   return (
     <FirebaseContext.Provider value={firebaseContext}>

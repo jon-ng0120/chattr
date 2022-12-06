@@ -58,7 +58,7 @@ const FirebaseProvider = (props) => {
   };
 
   const checkMobileView = () => {
-    window.innerWidth <= 600 && mobileChatRoomHandler();
+    window.innerWidth <= 768 && mobileChatRoomHandler();
   };
 
   const firebaseContext = {

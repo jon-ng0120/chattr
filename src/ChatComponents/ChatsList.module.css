@@ -4,13 +4,47 @@
   box-sizing: border-box;
   border-right: 1px solid #636363;
   background-color: #232b38;
+  width: 30%;
 }
 
 .chats_list_chats {
   margin-top: 1.5rem;
 }
 
-@media (max-width: 600px) {
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.header > p {
+  font-weight: 600;
+  color: #d1704d;
+  font-size: 2.7rem;
+  letter-spacing: 0.3rem;
+}
+
+.profile_picture {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+@media (max-width: 1680px) {
+  .chats_list_container {
+    width: 50%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .chats_list_container {
+    width: 70%;
+  }
+}
+
+@media (max-width: 768px) {
   .chats_list_container {
     width: 100vw;
     position: absolute;

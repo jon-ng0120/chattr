@@ -31,6 +31,14 @@ const ChatsList = () => {
 
   return (
     <div className={classes.chats_list_container}>
+      <div className={classes.header}>
+        <p>chattr</p>
+        <img
+          className={classes.profile_picture}
+          src={loggedInUser.photoURL}
+          referrerPolicy="no-referrer"
+        />
+      </div>
       <UserSearch />
       <div className={classes.chats_list_chats}>
         {chatsList.map((chatRoom) => (

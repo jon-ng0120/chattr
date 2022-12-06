@@ -7,7 +7,7 @@
 }
 
 .chats_list_chats {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 @media (max-width: 600px) {
@@ -15,6 +15,5 @@
     width: 100vw;
     position: absolute;
     z-index: 1;
-    /* display: none; */
   }
 }

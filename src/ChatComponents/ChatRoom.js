@@ -56,7 +56,12 @@ const ChatRoom = () => {
           }`}
         >
           <div className={classes.display_info}>
-            <button onClick={() => checkMobileView()}>Back</button>
+            <button
+              className={`material-icons ${classes.back_button}`}
+              onClick={() => checkMobileView()}
+            >
+              arrow_back
+            </button>
             <img
               src={activeChatUser.photoURL}
               className={classes.display_photo}

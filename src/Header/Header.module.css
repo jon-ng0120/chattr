@@ -1,0 +1,20 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.header > p {
+  font-weight: 600;
+  color: #f95d24;
+  font-size: 2.7rem;
+  letter-spacing: 0.3rem;
+}
+
+.profile_picture {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+}

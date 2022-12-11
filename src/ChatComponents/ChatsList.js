@@ -4,6 +4,7 @@ import FirebaseContext from '../store/firebase-context';
 import UserSearch from '../Search/UserSearch';
 import ChatsListItem from './ChatsListItem';
 import classes from './ChatsList.module.css';
+import Header from '../Header/Header';
 
 const ChatsList = () => {
   const [chatsList, setChatsList] = useState([]);
@@ -31,14 +32,7 @@ const ChatsList = () => {
 
   return (
     <div className={classes.chats_list_container}>
-      <div className={classes.header}>
-        <p>chattr</p>
-        <img
-          className={classes.profile_picture}
-          src={loggedInUser.photoURL}
-          referrerPolicy="no-referrer"
-        />
-      </div>
+      <Header />
       <UserSearch />
       <div className={classes.chats_list_chats}>
         {chatsList.map((chatRoom) => (

@@ -21,6 +21,7 @@ const FirebaseProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState();
   const [activeChatUser, setActiveChatUser] = useState();
   const [mobileChatRoomView, setMobileChatRoomView] = useState(false);
+  const [activeProfileMenu, setActiveProfileMenu] = useState(false);
 
   const auth = getAuth();
   const db = getFirestore();
@@ -61,6 +62,10 @@ const FirebaseProvider = (props) => {
     window.innerWidth <= 768 && mobileChatRoomHandler();
   };
 
+  const activeProfileMenuHandler = () => {
+    setActiveProfileMenu(!activeProfileMenu);
+  };
+
   const firebaseContext = {
     db,
     auth,
@@ -71,6 +76,8 @@ const FirebaseProvider = (props) => {
     setActiveChat: setActiveChatHandler,
     checkMobileView,
     mobileChatRoomView,
+    activeProfileMenu,
+    activeProfileMenuHandler,
   };
   return (
     <FirebaseContext.Provider value={firebaseContext}>

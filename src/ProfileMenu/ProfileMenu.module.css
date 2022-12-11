@@ -1,0 +1,20 @@
+.profile_menu {
+  padding: 1rem;
+  background-color: red;
+}
+
+.profile_menu > div {
+  padding: 0.5rem 0;
+}
+
+.profile_picture {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.user_details {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

@@ -1,10 +1,13 @@
 .profile_menu {
-  padding: 1rem;
-  background-color: red;
-}
-
-.profile_menu > div {
-  padding: 0.5rem 0;
+  background-color: #464b54;
+  color: rgba(239, 239, 239, 0.9);
+  position: absolute;
+  top: 5rem;
+  right: 0;
+  z-index: 2;
+  border-radius: 1rem;
+  padding: 1rem 0;
+  width: 30rem;
 }
 
 .profile_picture {
@@ -14,7 +17,21 @@
 }
 
 .user_details {
+  padding: 1rem 2rem;
   display: flex;
   align-items: center;
   gap: 1rem;
+  border-bottom: 1px solid rgba(137, 137, 137, 0.9);
+}
+
+.user_details p:nth-child(2) {
+  margin: 0.7rem 0;
+}
+
+.profile_menu_option p {
+  padding: 1rem 2rem;
+  cursor: pointer;
+}
+.profile_menu_option p:hover {
+  background-color: rgba(121, 121, 121, 0.9);
 }

@@ -9,9 +9,10 @@ const Header = () => {
   const { loggedInUser, activeProfileMenu, activeProfileMenuHandler } =
     firebaseProviderCtx;
   return (
-    <div className={classes.header} onClick={() => activeProfileMenuHandler()}>
+    <div className={classes.header}>
       <p>chattr</p>
       <img
+        onClick={() => activeProfileMenuHandler()}
         className={classes.profile_picture}
         src={loggedInUser.photoURL}
         referrerPolicy="no-referrer"

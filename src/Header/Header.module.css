@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
+  position: relative;
 }
 
 .header > p {
@@ -17,4 +18,5 @@
   height: 3.5rem;
   border-radius: 50%;
   cursor: pointer;
+  z-index: 2;
 }

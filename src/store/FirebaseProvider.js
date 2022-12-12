@@ -62,7 +62,8 @@ const FirebaseProvider = (props) => {
     window.innerWidth <= 768 && mobileChatRoomHandler();
   };
 
-  const activeProfileMenuHandler = () => {
+  const activeProfileMenuHandler = (e) => {
+    console.log(e);
     setActiveProfileMenu(!activeProfileMenu);
   };
 

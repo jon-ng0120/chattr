@@ -5,7 +5,7 @@ import classes from './ProfileMenu.module.css';
 const ProfileMenu = () => {
   const firebaseProviderCtx = useContext(FirebaseContext);
   const { loggedInUser } = firebaseProviderCtx;
-  console.log(loggedInUser);
+
   return (
     <div className={classes.profile_menu}>
       <div className={classes.user_details}>
@@ -19,10 +19,10 @@ const ProfileMenu = () => {
           <p>{loggedInUser.email}</p>
         </div>
       </div>
-      <div>
+      <div className={classes.profile_menu_option}>
         <p>Switch Themes</p>
       </div>
-      <div>
+      <div className={classes.profile_menu_option}>
         <p>Sign Out</p>
       </div>
     </div>

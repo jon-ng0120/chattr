@@ -62,8 +62,7 @@ const FirebaseProvider = (props) => {
     window.innerWidth <= 768 && mobileChatRoomHandler();
   };
 
-  const activeProfileMenuHandler = (e) => {
-    console.log(e);
+  const activeProfileMenuHandler = () => {
     setActiveProfileMenu(!activeProfileMenu);
   };
 
@@ -73,6 +72,7 @@ const FirebaseProvider = (props) => {
     googleSignIn,
     loggedInUser: auth.currentUser,
     isLoggedIn,
+    setIsLoggedIn,
     activeChatUser,
     setActiveChat: setActiveChatHandler,
     checkMobileView,

@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import classes from './Header.module.css';
-import SignOut from '../SignOut/SignOut';
 import FirebaseContext from '../store/firebase-context';
 import ProfileMenu from '../ProfileMenu/ProfileMenu';
 

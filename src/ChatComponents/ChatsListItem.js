@@ -8,7 +8,7 @@ const ChatsListItem = ({ members, lastMessage }) => {
   const [chatMember, setChatMember] = useState();
 
   const firebaseProviderCtx = useContext(FirebaseContext);
-  const { loggedInUser, db, setActiveChat, checkMobileView } =
+  const { loggedInUser, db, setActiveChat, checkMobileView, darkMode } =
     firebaseProviderCtx;
 
   const setChatMemberHandler = async (members) => {
@@ -31,7 +31,9 @@ const ChatsListItem = ({ members, lastMessage }) => {
   if (chatMember) {
     return (
       <div
-        className={classes.chat_list_item_container}
+        className={`${classes.chat_list_item_container} ${
+          darkMode || classes.light
+        }`}
         onClick={() => {
           setActiveChat(chatMember);
           checkMobileView();

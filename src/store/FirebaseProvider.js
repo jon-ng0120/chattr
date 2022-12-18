@@ -22,6 +22,7 @@ const FirebaseProvider = (props) => {
   const [activeChatUser, setActiveChatUser] = useState();
   const [mobileChatRoomView, setMobileChatRoomView] = useState(false);
   const [activeProfileMenu, setActiveProfileMenu] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   const auth = getAuth();
   const db = getFirestore();
@@ -48,6 +49,11 @@ const FirebaseProvider = (props) => {
       console.log(err);
       setIsLoggedIn(false);
     }
+  };
+
+  const darkModeHandler = () => {
+    setDarkMode(!darkMode);
+    console.log(darkMode);
   };
 
   const setActiveChatHandler = (chatUser) => {
@@ -79,6 +85,8 @@ const FirebaseProvider = (props) => {
     mobileChatRoomView,
     activeProfileMenu,
     activeProfileMenuHandler,
+    darkMode,
+    darkModeHandler,
   };
   return (
     <FirebaseContext.Provider value={firebaseContext}>

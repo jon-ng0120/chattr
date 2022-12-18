@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classes from './Message.module.css';
-import { auth } from '../firebase-config';
+import FirebaseContext from '../store/firebase-context';
 
 const Message = ({ uid, message, displayName, photoURL, timestamp }) => {
+  const firebaseProviderCtx = useContext(FirebaseContext);
+  const { auth, darkMode } = firebaseProviderCtx;
   const currentUser = auth.currentUser;
 
   const returnDateTime = () => {
@@ -21,7 +23,7 @@ const Message = ({ uid, message, displayName, photoURL, timestamp }) => {
     <div
       className={`${classes.message_container} ${
         uid === currentUser.uid ? classes.sent : classes.received
-      }`}
+      } ${darkMode || classes.light}`}
     >
       <img
         className={`${classes.display_picture} ${
@@ -36,7 +38,7 @@ const Message = ({ uid, message, displayName, photoURL, timestamp }) => {
             uid === currentUser.uid
               ? classes.display_name_sent
               : classes.display_name_recieved
-          } `}
+          }`}
         >
           {uid === currentUser.uid ? 'Me' : displayName}
         </p>

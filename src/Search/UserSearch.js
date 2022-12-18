@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { usersCol } from '../firebase-config';
-import { query, where, onSnapshot } from 'firebase/firestore';
+// import { usersCol } from '../firebase-config';
+import { query, where, onSnapshot, collection } from 'firebase/firestore';
+
 import UserSearchItem from './UserSearchItem';
 import classes from './UserSearch.module.css';
 import FirebaseContext from '../store/firebase-context';
 
 const UserSearch = () => {
   const firebaseProviderCtx = useContext(FirebaseContext);
-  const { uid } = firebaseProviderCtx.loggedInUser;
+  const { loggedInUser, uid, db } = firebaseProviderCtx;
   const [searchUser, setSearchUser] = useState('');
   const [foundUsers, setFoundUsers] = useState([]);
 
@@ -24,6 +25,7 @@ const UserSearch = () => {
   };
 
   useEffect(() => {
+    const usersCol = collection(db, 'users');
     const usersQuery = query(
       usersCol,
       where('displayName', '>=', searchUser),
@@ -56,7 +58,7 @@ const UserSearch = () => {
 
       <div className={classes.search_results}>
         {foundUsers.map((user) => {
-          if (user.uid !== uid) {
+          if (user.uid !== loggedInUser.uid) {
             return (
               <UserSearchItem
                 key={user.uid}

@@ -9,7 +9,7 @@ import Header from '../Header/Header';
 const ChatsList = () => {
   const [chatsList, setChatsList] = useState([]);
   const firebaseProviderCtx = useContext(FirebaseContext);
-  const { loggedInUser, db } = firebaseProviderCtx;
+  const { loggedInUser, db, darkMode } = firebaseProviderCtx;
 
   useEffect(() => {
     const getCurrentUser = async () => {
@@ -31,7 +31,11 @@ const ChatsList = () => {
   }, []);
 
   return (
-    <div className={classes.chats_list_container}>
+    <div
+      className={`${classes.chats_list_container} ${
+        darkMode ? classes.dark : classes.light
+      }`}
+    >
       <Header />
       <UserSearch />
       <div className={classes.chats_list_chats}>

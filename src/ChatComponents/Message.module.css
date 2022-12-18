@@ -25,9 +25,18 @@
   align-self: flex-start;
 }
 
+.light .received_message {
+  background-color: rgb(235, 235, 235);
+  color: rgb(90, 90, 90);
+}
+
 .display_name {
   color: rgba(255, 255, 255, 0.8);
   font-size: 1.6rem;
+}
+
+.light .display_name {
+  color: rgb(49, 49, 49);
 }
 
 .display_name_recieved {
@@ -64,4 +73,8 @@
   margin-top: 1rem;
   color: rgba(255, 255, 255, 0.4);
   font-size: 1.4rem;
+}
+
+.light .message_date {
+  color: rgba(69, 69, 69, 0.8);
 }

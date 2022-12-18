@@ -5,8 +5,14 @@ import { signOut } from 'firebase/auth';
 
 const ProfileMenu = () => {
   const firebaseProviderCtx = useContext(FirebaseContext);
-  const { loggedInUser, auth, setIsLoggedIn, activeProfileMenuHandler } =
-    firebaseProviderCtx;
+  const {
+    loggedInUser,
+    auth,
+    setIsLoggedIn,
+    activeProfileMenuHandler,
+    darkMode,
+    darkModeHandler,
+  } = firebaseProviderCtx;
 
   const signOutHandler = async () => {
     try {
@@ -19,7 +25,7 @@ const ProfileMenu = () => {
   };
 
   return (
-    <div className={classes.profile_menu}>
+    <div className={`${classes.profile_menu} ${darkMode || classes.light}`}>
       <div className={classes.user_details}>
         <img
           className={classes.profile_picture}
@@ -31,7 +37,7 @@ const ProfileMenu = () => {
           <p>{loggedInUser.email}</p>
         </div>
       </div>
-      <div className={classes.profile_menu_option}>
+      <div className={classes.profile_menu_option} onClick={darkModeHandler}>
         <p>Switch Themes</p>
       </div>
       <div className={classes.profile_menu_option} onClick={signOutHandler}>

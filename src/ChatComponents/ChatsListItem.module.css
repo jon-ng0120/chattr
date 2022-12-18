@@ -26,3 +26,15 @@
 .display_name {
   color: #fff;
 }
+
+.light {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.light .display_name {
+  color: rgb(9, 9, 9);
+}
+
+.light:hover {
+  background-color: rgba(232, 232, 232, 0.8);
+}

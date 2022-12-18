@@ -1,6 +1,6 @@
 .profile_menu {
   background-color: #464b54;
-  color: rgba(239, 239, 239, 0.9);
+  color: rgba(240, 240, 240, 0.8);
   position: absolute;
   top: 5rem;
   right: 0;
@@ -9,6 +9,11 @@
   padding: 1rem 0;
   width: 30rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.light {
+  background-color: rgb(230, 230, 230);
+  color: rgba(30, 30, 30, 0.9);
 }
 
 .profile_picture {
@@ -35,4 +40,8 @@
 }
 .profile_menu_option p:hover {
   background-color: rgba(121, 121, 121, 0.9);
+}
+
+.light .profile_menu_option p:hover {
+  background-color: rgba(210, 210, 210, 0.9);
 }

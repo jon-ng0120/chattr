@@ -3,12 +3,19 @@
   height: 100vh;
   box-sizing: border-box;
   border-right: 1px solid #636363;
-  background-color: #232b38;
   width: 30%;
 }
 
 .chats_list_chats {
   margin-top: 1.5rem;
+}
+
+.dark {
+  background-color: var(--dark-theme);
+}
+
+.light {
+  background-color: var(--light-theme);
 }
 
 @media (max-width: 1680px) {

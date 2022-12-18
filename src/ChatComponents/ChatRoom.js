@@ -22,6 +22,7 @@ const ChatRoom = () => {
     db,
     checkMobileView,
     mobileChatRoomView,
+    darkMode,
   } = firebaseProviderCtx;
 
   useEffect(() => {
@@ -48,16 +49,20 @@ const ChatRoom = () => {
   }, [messages]);
 
   return (
-    <div className={classes.chat_room}>
+    <div className={`${classes.chat_room} ${darkMode || classes.light}`}>
       {activeChatUser && (
         <div
           className={`${classes.chat_room_container} ${
             mobileChatRoomView ? classes.active : classes.hidden
           }`}
         >
-          <div className={classes.display_info}>
+          <div
+            className={`${classes.display_info} ${darkMode || classes.light}`}
+          >
             <button
-              className={`material-icons ${classes.back_button}`}
+              className={`material-icons ${classes.back_button} ${
+                darkMode || classes.light
+              }`}
               onClick={() => checkMobileView()}
             >
               arrow_back

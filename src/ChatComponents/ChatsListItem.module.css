@@ -23,6 +23,13 @@
   flex-direction: column;
 }
 
+.last_message {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 50rem;
+}
+
 .display_name {
   color: #fff;
 }
@@ -37,4 +44,40 @@
 
 .light:hover {
   background-color: rgba(232, 232, 232, 0.8);
+}
+
+@media only screen and (max-width: 1900px) {
+  .last_message {
+    width: 40rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .last_message {
+    width: 35rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .last_message {
+    width: 60rem;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .last_message {
+    width: 50rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .last_message {
+    width: 40rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .last_message {
+    width: 30rem;
+  }
 }

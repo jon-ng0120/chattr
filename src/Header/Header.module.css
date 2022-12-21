@@ -6,11 +6,9 @@
   position: relative;
 }
 
-.header > p {
-  font-weight: 600;
-  color: #f95d24;
-  font-size: 2.7rem;
-  letter-spacing: 0.3rem;
+.logo {
+  width: 6.5rem;
+  height: 6.5rem;
 }
 
 .profile_picture {

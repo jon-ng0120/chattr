@@ -18,6 +18,12 @@ const Header = () => {
         referrerPolicy="no-referrer"
       />
       {activeProfileMenu && <ProfileMenu />}
+      {activeProfileMenu && (
+        <div
+          className={classes.background}
+          onClick={activeProfileMenuHandler}
+        />
+      )}
     </div>
   );
 };

@@ -12,12 +12,6 @@ const Chats = () => {
     <div className={classes.chats_home_container}>
       <ChatsList />
       <ChatRoom />
-      {activeProfileMenu && (
-        <div
-          className={classes.background}
-          onClick={() => activeProfileMenuHandler()}
-        />
-      )}
     </div>
   );
 };

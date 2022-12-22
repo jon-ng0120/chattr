@@ -5,7 +5,7 @@
   overflow: hidden;
   margin-bottom: 0.5rem;
   cursor: pointer;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
 }
 
 .chat_list_item_container:hover {

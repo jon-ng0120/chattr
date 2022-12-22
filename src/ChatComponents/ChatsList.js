@@ -37,8 +37,9 @@ const ChatsList = () => {
       }`}
     >
       <Header />
-      <UserSearch />
+
       <div className={classes.chats_list_chats}>
+        <UserSearch />
         {chatsList.map((chatRoom) => (
           <ChatsListItem
             key={chatRoom.id}

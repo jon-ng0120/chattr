@@ -75,7 +75,6 @@ const SendMessage = (props) => {
 
   return (
     <div className={classes.user_input_container}>
-      <p className={classes.attachments}>+</p>
       <form onSubmit={sendMessage} className={classes.user_input}>
         <input ref={messageRef} placeholder="Type a message" />
         <button className="material-icons">send</button>

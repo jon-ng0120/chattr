@@ -7,7 +7,7 @@
   border-radius: 5px;
   padding: 0.5rem 0.5rem;
   box-sizing: border-box;
-  margin-bottom: 1.5rem;
+  margin-bottom: 3rem;
 }
 
 .search_input input {
@@ -20,6 +20,6 @@
 
 .search_results {
   background-color: #dedede;
-  margin-top: -0.4rem;
+  margin-top: -2rem;
   border-radius: 0 0 5px 5px;
 }

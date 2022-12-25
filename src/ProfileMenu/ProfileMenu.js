@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import FirebaseContext from '../store/firebase-context';
 import classes from './ProfileMenu.module.css';
 import { signOut } from 'firebase/auth';
+import stockImage from '../assets/sample-account-image.png';
 
 const ProfileMenu = () => {
   const firebaseProviderCtx = useContext(FirebaseContext);
@@ -29,7 +30,7 @@ const ProfileMenu = () => {
       <div className={classes.user_details}>
         <img
           className={classes.profile_picture}
-          src={loggedInUser.photoURL}
+          src={loggedInUser.photoURL || stockImage}
           referrerPolicy="no-referrer"
         />
         <div>

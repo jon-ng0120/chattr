@@ -20,6 +20,13 @@ const LoginPage = () => {
             <img src={GoogleIcon} />
             <span>Sign in with Google</span>
           </div>
+          <div
+            className={classes.google_login}
+            onClick={firebaseProviderCtx.sampleAccountLogin}
+          >
+            <span className="material-icons">person</span>
+            <span>Sign in with Sample Account</span>
+          </div>
         </div>
       </div>
     </div>

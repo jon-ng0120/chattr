@@ -3,7 +3,12 @@ import FirebaseContext from './firebase-context';
 
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyD-lBWhMJC84-XDE-SKDBjzSu-SYzO1sG4',
@@ -51,6 +56,16 @@ const FirebaseProvider = (props) => {
     }
   };
 
+  const sampleAccountLogin = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, 'john.smith@gmail.com', '123456');
+      setIsLoggedIn(true);
+    } catch (error) {
+      console.log(error);
+      setIsLoggedIn(false);
+    }
+  };
+
   const darkModeHandler = () => {
     setDarkMode(!darkMode);
     console.log(darkMode);
@@ -87,6 +102,7 @@ const FirebaseProvider = (props) => {
     activeProfileMenuHandler,
     darkMode,
     darkModeHandler,
+    sampleAccountLogin,
   };
   return (
     <FirebaseContext.Provider value={firebaseContext}>

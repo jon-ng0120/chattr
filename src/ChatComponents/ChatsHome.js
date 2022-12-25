@@ -6,7 +6,6 @@ import FirebaseContext from '../store/firebase-context';
 
 const Chats = () => {
   const firebaseProviderCtx = useContext(FirebaseContext);
-  const { activeProfileMenu, activeProfileMenuHandler } = firebaseProviderCtx;
 
   return (
     <div className={classes.chats_home_container}>

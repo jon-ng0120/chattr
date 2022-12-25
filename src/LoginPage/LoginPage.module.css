@@ -9,8 +9,7 @@
 
 .parent_div > div {
   background-color: rgba(20, 25, 36, 0.7);
-  padding: 2.5rem 1rem;
-  width: 50rem;
+  padding: 2.5rem 3rem;
   margin: auto;
   border-radius: 1rem;
 }
@@ -23,6 +22,7 @@
 
 .google_login {
   display: flex;
+  gap: 1rem;
   align-items: center;
   justify-content: center;
   height: 3rem;
@@ -33,12 +33,10 @@
   border: 1px solid #aaa;
   cursor: pointer;
   padding: 0.3rem 0 0.5rem 0;
-  /* background-color: #fff; */
   color: rgba(255, 255, 255, 0.9);
   margin: 2rem auto;
 }
 
 .google_login img {
   height: 2rem;
-  margin-right: 1rem;
 }

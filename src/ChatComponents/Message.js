@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import classes from './Message.module.css';
 import FirebaseContext from '../store/firebase-context';
+import stockImage from '../assets/sample-account-image.png';
 
 const Message = ({ uid, message, displayName, photoURL, timestamp }) => {
   const firebaseProviderCtx = useContext(FirebaseContext);
@@ -29,7 +30,7 @@ const Message = ({ uid, message, displayName, photoURL, timestamp }) => {
         className={`${classes.display_picture} ${
           uid === currentUser.uid ? classes.display_picture_sent : ''
         } `}
-        src={photoURL}
+        src={photoURL || stockImage}
         referrerPolicy="no-referrer"
       />
       <div className={classes.message_details}>

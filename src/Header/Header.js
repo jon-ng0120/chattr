@@ -3,6 +3,7 @@ import classes from './Header.module.css';
 import FirebaseContext from '../store/firebase-context';
 import ProfileMenu from '../ProfileMenu/ProfileMenu';
 import Logo from '../assets/logo.svg';
+import stockImage from '../assets/sample-account-image.png';
 
 const Header = () => {
   const firebaseProviderCtx = useContext(FirebaseContext);
@@ -14,7 +15,7 @@ const Header = () => {
       <img
         onClick={() => activeProfileMenuHandler()}
         className={classes.profile_picture}
-        src={loggedInUser.photoURL}
+        src={loggedInUser.photoURL || stockImage}
         referrerPolicy="no-referrer"
       />
       {activeProfileMenu && <ProfileMenu />}

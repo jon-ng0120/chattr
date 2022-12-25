@@ -8,7 +8,7 @@ import FirebaseContext from '../store/firebase-context';
 
 const UserSearch = () => {
   const firebaseProviderCtx = useContext(FirebaseContext);
-  const { loggedInUser, uid, db } = firebaseProviderCtx;
+  const { loggedInUser, db } = firebaseProviderCtx;
   const [searchUser, setSearchUser] = useState('');
   const [foundUsers, setFoundUsers] = useState([]);
 

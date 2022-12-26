@@ -1,13 +1,13 @@
 .chat_room {
   box-sizing: border-box;
-  width: 100%;
-  position: relative;
+  width: 100vw;
+  height: 100vh;
   background-color: var(--dark-theme);
   transition: background-color 0.3s ease;
 }
 
 .chat_room_container {
-  height: 100vh;
+  height: 100%;
   position: relative;
   display: grid;
   grid-template-rows: 7rem auto 10rem;
@@ -16,7 +16,7 @@
 
 .chats_container {
   padding: 1.5rem;
-  overflow: auto;
+  overflow: scroll;
 }
 
 .chats_container > div {
@@ -30,7 +30,6 @@
   background-color: var(--dark-theme);
   transition: background-color 0.3s ease;
   width: 100%;
-  padding: 1.5rem 0 1.5rem 2rem;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
@@ -42,6 +41,7 @@
 .display_photo {
   border-radius: 50%;
   width: 4rem;
+  margin-left: 2rem;
 }
 
 .back_button {
@@ -50,8 +50,9 @@
   border: none;
   cursor: pointer;
   color: #d8572a;
-  margin-right: 0.5rem;
+  margin-left: 1.5rem;
   display: none;
+  font-size: 3rem;
 }
 
 .light {

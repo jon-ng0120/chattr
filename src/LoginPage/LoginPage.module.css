@@ -9,7 +9,7 @@
 
 .parent_div > div {
   background-color: rgba(20, 25, 36, 0.7);
-  padding: 2.5rem 3rem;
+  padding: 2.5rem 2rem;
   margin: auto;
   border-radius: 1rem;
 }
@@ -26,13 +26,12 @@
   align-items: center;
   justify-content: center;
   height: 3rem;
-  width: 30rem;
   font-size: 1.5rem;
   font-weight: 600;
   border-radius: 1rem;
   border: 1px solid #aaa;
   cursor: pointer;
-  padding: 0.3rem 0 0.5rem 0;
+  padding: 0.5rem 1rem;
   color: rgba(255, 255, 255, 0.9);
   margin: 2rem auto;
 }

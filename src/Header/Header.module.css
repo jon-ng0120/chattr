@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 2rem;
+  height: auto;
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }

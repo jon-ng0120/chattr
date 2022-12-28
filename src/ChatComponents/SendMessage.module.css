@@ -1,11 +1,10 @@
 .user_input_container {
+  position: sticky;
+  bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
   width: 90%;
-  height: 100%;
-  box-sizing: border-box;
-  display: flex;
-  align-items: flex-start;
-  margin: auto;
-  gap: 1rem;
+  padding-bottom: 3rem;
 }
 
 .user_input {

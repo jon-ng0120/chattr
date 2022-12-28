@@ -49,12 +49,12 @@ const ChatRoom = () => {
   }, [messages]);
 
   return (
-    <div className={`${classes.chat_room} ${darkMode || classes.light}`}>
+    <React.Fragment>
       {activeChatUser && (
         <div
           className={`${classes.chat_room_container} ${
             mobileChatRoomView ? classes.active : classes.hidden
-          }`}
+          } ${darkMode || classes.light}`}
         >
           <div
             className={`${classes.display_info} ${darkMode || classes.light}`}
@@ -105,7 +105,7 @@ const ChatRoom = () => {
           {activeChatUser && <SendMessage />}
         </div>
       )}
-    </div>
+    </React.Fragment>
   );
 };
 

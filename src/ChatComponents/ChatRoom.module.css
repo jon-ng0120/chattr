@@ -1,23 +1,17 @@
-.chat_room {
-  box-sizing: border-box;
+.chat_room_container {
+  max-height: 100vh;
   width: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
   background-color: var(--dark-theme);
   transition: background-color 0.3s ease;
-}
-
-.chat_room_container {
-  height: 100vh;
-  position: relative;
-  display: grid;
-  grid-template-rows: 7rem auto 11rem;
-  background-color: inherit;
 }
 
 .chats_container {
   padding: 1.5rem;
   overflow: auto;
-  margin: 2rem 0;
+  margin: 1.5rem 0 5rem 0;
 }
 
 .chats_container > div {
@@ -25,12 +19,16 @@
 }
 
 .display_info {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   gap: 1rem;
   background-color: var(--dark-theme);
   transition: background-color 0.3s ease;
-  padding: 0 1rem;
+  padding: 1.5rem;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 

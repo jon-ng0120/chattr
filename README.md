@@ -1,6 +1,6 @@
 # chattr
 
-The multi-room real-time chat application that's built using React as its front-end and firebase as its database.
+A multi room real-time chat application that's built using React as its front-end and firebase as its database and backend.
 
 ## Features
 

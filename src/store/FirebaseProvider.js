@@ -24,7 +24,7 @@ const FirebaseProvider = (props) => {
   initializeApp(firebaseConfig);
 
   const [isLoggedIn, setIsLoggedIn] = useState();
-  const [activeChatUser, setActiveChatUser] = useState();
+  const [activeChatUser, setActiveChatUser] = useState(null);
   const [mobileChatRoomView, setMobileChatRoomView] = useState(false);
   const [activeProfileMenu, setActiveProfileMenu] = useState(false);
   const [darkMode, setDarkMode] = useState(true);

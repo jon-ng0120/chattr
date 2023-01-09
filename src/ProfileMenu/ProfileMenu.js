@@ -13,11 +13,13 @@ const ProfileMenu = () => {
     activeProfileMenuHandler,
     darkMode,
     darkModeHandler,
+    setActiveChat,
   } = firebaseProviderCtx;
 
   const signOutHandler = async () => {
     try {
       await signOut(auth);
+      await setActiveChat(null);
       setIsLoggedIn(false);
       activeProfileMenuHandler();
     } catch (e) {

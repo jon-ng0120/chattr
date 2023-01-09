@@ -22,6 +22,7 @@ const UserSearch = () => {
 
   const selectedUserHandler = (user) => {
     firebaseProviderCtx.setActiveChat(user);
+    firebaseProviderCtx.checkMobileView();
   };
 
   useEffect(() => {
